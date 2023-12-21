@@ -9,6 +9,7 @@ function Home() {
                 <Introduction />
                 <Information />
                 <CentralThemes />
+
             </div>
         </>
     )

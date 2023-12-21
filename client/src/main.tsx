@@ -16,10 +16,18 @@ function App() {
                 <Route index element={<Home />}>
                     
                 </Route>
-                <Route path="/allateman" element={<AllThemes />}>
+                <Route path="allateman" element={<AllThemes />}>
 
                 </Route>
+            </Route>,
+            <Route path="/bridgehelper" element={<Layout />}>
+            <Route index element={<Home />}>
+                
             </Route>
+            <Route path="allateman" element={<AllThemes />}>
+
+            </Route>
+        </Route>
         ])
     )
     return (
