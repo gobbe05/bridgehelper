@@ -5,7 +5,7 @@ import CentralThemes from "./centralthemes"
 function Home() {
     return (
         <>
-            <div className="flex flex-col gap-32">
+            <div className="flex flex-col gap-32 mt-16">
                 <Introduction />
                 <Information />
                 <CentralThemes />

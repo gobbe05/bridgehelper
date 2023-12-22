@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "poker": "#447445"
+        "poker": "#35654d"
       },
     },
   },
