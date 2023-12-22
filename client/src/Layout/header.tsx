@@ -9,8 +9,9 @@ function Header() {
             
             <div className={`relative lg:static header-text w-full text-center py-16 ${color?.colorMode == "light" ? "bg-poker text-white" : "bg-white text-gray-900"} rounded transition-all`}>
                 <ColorButton />
-                <h1 className="sm:text-6xl text-4xl font-bold ">Bridgehelper.</h1>
-                <p className="sm:text-2xl text-xl">Lär dig att spela Bridge</p>
+                <h1 className="sm:text-6xl text-4xl font-bold ">BridgeHelper</h1>
+                <p className="sm:text-2xl text-xl">För dig som vill ha en uppfräschning från grunden
+</p>
             </div>
         </div>
     )

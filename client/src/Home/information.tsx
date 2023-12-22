@@ -12,7 +12,8 @@ function Information() {
             <div className={`sm:w-1/2 ${color?.colorMode == "light" ? "sm:bg-poker sm:text-white" : "sm:bg-white sm:text-poker"} sm:p-8 rounded`}>
                 <h1 className="text-3xl font-bold">Information</h1>
                 <p className="text-lg">Hjälpredan består av 30 klickbara temaavsnitt syftande till att spegla Bridgefundamenta.</p>
-                <p className="font-light">(Fundera över om presentation på papper ev. kam vara ett bättre alternativ till läsning på skärm för inlärning – skriv då ut materialet).</p>
+                <p className="font-light">(Du som känner dig mer bekväm med att
+se informationen på papper – skriv ut materialet).</p>
             </div>
         </div>
     )
