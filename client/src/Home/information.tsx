@@ -1,13 +1,19 @@
+import { useContext} from 'react'
+import { colorcontext } from '../main'
+
 function Information() {
+    const color = useContext(colorcontext)
+
     return (
         <div className="flex items-center">
             <div className="sm:w-1/2">
-                <img className="hidden sm:block bg-white h-48 px-8 mx-auto rounded" src="https://media.istockphoto.com/id/911713936/vector/four-aces-icon.jpg?s=612x612&w=0&k=20&c=aWBr5KTX6YQEuM_i7zqDDeeHqzVP_-09iPYmxEB5lwI="/>
+                <img className="hidden sm:block h-48 mx-auto rounded" src="https://creazilla-store.fra1.digitaloceanspaces.com/cliparts/5626618/deck-of-cards-clipart-sm.png"/>
             </div>
-            <div className="sm:w-1/2 sm:bg-poker sm:text-white sm:p-8 rounded">
+            <div className={`sm:w-1/2 ${color?.colorMode == "light" ? "sm:bg-poker sm:text-white" : "sm:bg-white sm:text-poker"} sm:p-8 rounded`}>
                 <h1 className="text-3xl font-bold">Information</h1>
                 <p className="text-lg">Hjälpredan består av 30 klickbara temaavsnitt syftande till att spegla Bridgefundamenta.</p>
-                <p className="font-light">(Fundera över om presentation på papper ev. kam vara ett bättre alternativ till läsning på skärm för inlärning – skriv då ut materialet).</p>
+                <p className="font-light">(Du som känner dig mer bekväm med att
+se informationen på papper – skriv ut materialet).</p>
             </div>
         </div>
     )

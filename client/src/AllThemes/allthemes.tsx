@@ -17,7 +17,6 @@ function AllThemes() {
                 <Theme tema="Tema 1" heading="Mer om NT givar"/>
                 <Theme tema="Tema 1" heading="Mer om NT givar"/>
                 <Theme tema="Tema 1" heading="Mer om NT givar"/>
-                <Theme tema="Tema 1" heading="Mer om NT givar"/>
             </div>
         </>
     )

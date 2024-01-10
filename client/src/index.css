@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-    background-image: url('../public/background.png');
-    background-size: 50%;
-    background-color: #000;
+.header-text {
+    background-image: url("../public/background.png");
 }

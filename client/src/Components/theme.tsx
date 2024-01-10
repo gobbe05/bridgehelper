@@ -1,13 +1,16 @@
 import { useContext } from "react"
 import { colorcontext } from "../main"
+import { IoArrowDownOutline } from "react-icons/io5";
 
 function Theme({tema, heading} : {tema: string, heading: string}) {
     const color = useContext(colorcontext)
     return (
         <>
-            <div className="flex gap-2 items-center">
+            <div className={`flex items-center border-b ${color?.colorMode == "light" ? "border-white" : "border-poker"} py-4 mt-2 group cursor-pointer`}>
                 <p className="text-lg">{heading}</p>
-                <a href="#" className={`text-lg border-b ml-auto ${color && color.colorMode == "light" ? "text-blue-300 border-blue-300" : "text-blue-500 border-blue-500"}`}>{tema}</a>
+                <div className={`flex justify-center items-center border-2  w-12 h-12 rounded-full ml-auto ${color?.colorMode == "dark" ? "border-poker group-hover:bg-poker group-hover:text-white" : "border-white group-hover:bg-white group-hover:text-poker"} transition-all`}>
+                    <IoArrowDownOutline size={32}/>
+                </div>
             </div>
         </>
     )
