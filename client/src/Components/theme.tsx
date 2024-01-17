@@ -8,7 +8,7 @@ function Theme({tema, heading} : {tema: string, heading: string}) {
         <>
             <div className={`flex items-center border-b ${color?.colorMode == "light" ? "border-white" : "border-poker"} py-4 mt-2 group cursor-pointer`}>
                 <p className="text-lg">{heading}</p>
-                <div className={`flex justify-center items-center border-2  w-12 h-12 rounded-full ml-auto ${color?.colorMode == "dark" ? "border-poker group-hover:bg-poker group-hover:text-white" : "border-white group-hover:bg-white group-hover:text-poker"} transition-all`}>
+                <div className={`flex justify-center items-center border-2  w-12 aspect-square rounded-full ml-auto ${color?.colorMode == "dark" ? "border-poker group-hover:bg-poker group-hover:text-white" : "border-white group-hover:bg-white group-hover:text-poker"} transition-all`}>
                     <IoArrowDownOutline size={32}/>
                 </div>
             </div>
