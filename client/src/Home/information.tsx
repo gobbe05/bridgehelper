@@ -8,7 +8,7 @@ function Information() {
 
     return (
         <div className="flex items-center">
-            <div className={`flex flex-col ${color?.colorMode == "light" ? "sm:bg-poker sm:text-white" : "sm:bg-white sm:text-poker"} sm:p-8 rounded`}>
+            <div className={`flex flex-col ${color?.colorMode == "light" ? "sm:bg-poker sm:text-white" : "sm:bg-white sm:text-poker"} sm:p-8 rounded transition-all`}>
                 <div className='flex flex-col gap-4'>
                     <h1 className="text-3xl font-bold px-4">Information</h1>
                     <Theme text={"Behöver du endast en uppfräschning av NT-budet och vill ha en överblick på principen för överföring, går du direkt till tema 4b"} theme={"Tema 4b"}/>

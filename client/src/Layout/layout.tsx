@@ -17,8 +17,8 @@ function Layout() {
         FetchVisitorCount()
     }, [])
     return (
-            <div className={`${color?.colorMode == "light" ? "bg-white text-neutral-800" : "bg-poker text-white"} transition-all`}>
-                <div className={`lg:w-3/4 xl:w-2/3 px-8 md:px-16 2xl:px-32 sm:mx-auto`}>
+            <div className={`min-h-screen ${color?.colorMode == "light" ? "bg-white text-neutral-800" : "bg-poker text-white"} transition-all`}>
+                <div className={`lg:w-3/4 xl:w-2/3 px-8 md:px-16 2xl:px-32 sm:mx-auto transition-all`}>
                     <div>
                         {/* Header */}
                         <Header visitorCount={visitorCount}/>

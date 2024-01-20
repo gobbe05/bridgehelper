@@ -6,7 +6,7 @@ function InformationTema() {
 
     return (
         <div className="flex items-center">
-            <div className="sm:w-1/2">
+            <div className="sm:w-1/2 transition-all">
                 <img className="hidden sm:block h-48 mx-auto rounded" src="https://creazilla-store.fra1.digitaloceanspaces.com/cliparts/5626618/deck-of-cards-clipart-sm.png"/>
             </div>
             <div className={`sm:w-1/2 ${color?.colorMode == "light" ? "sm:bg-poker sm:text-white" : "sm:bg-white sm:text-poker"} sm:p-8 rounded`}>
