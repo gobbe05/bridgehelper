@@ -19,7 +19,7 @@ function AllThemes() {
     if(themes.length > 0) {
         return (
             <>
-                <div className={`flex flex-col justify-center gap-2 p-8 lg:p-16 rounded mb-24 ${color && color.colorMode == "light" ? "bg-poker text-white" : "bg-white text-poker"} transition-all`}>
+                <div className={`flex flex-col justify-center gap-2 p-8 lg:p-16 rounded mb-24 ${color && color.colorMode == "light" ? "bg-poker text-white" : "bg-white text-gray-700"} transition-all`}>
                     <h1 className="text-3xl font-bold">Alla Teman</h1>
                     {themes.map((theme) => (
                       <div>

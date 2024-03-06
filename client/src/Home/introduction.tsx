@@ -5,8 +5,8 @@ function Introduction() {
     const color = useContext(colorcontext)
 
     return (
-        <div className="flex items-center">
-            <div className={`sm:w-1/2 ${color?.colorMode == "light" ? "sm:bg-poker sm:text-white" : "sm:bg-white sm:text-poker"} sm:p-8 rounded transition-all`}>
+        <div className={`flex items-center rounded ${color?.colorMode == "light" ? "sm:bg-poker sm:text-white" : "sm:bg-white sm:text-gray-700"}`}>
+            <div className={`sm:w-1/2  sm:p-8 transition-all`}>
                 <h1 className="text-3xl font-bold">Information</h1>
                 <p className="text-lg">Hjälpredan består av 30 klickbara temaavsnitt syftande till att spegla Bridgefundamenta.</p>
                 <p className="font-light">(Du som känner dig mer bekväm med att

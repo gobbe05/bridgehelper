@@ -7,7 +7,7 @@ import { useEffect, useState } from "react"
 function Home() {
     return (
         <>
-            <div className="flex flex-col gap-24 mt-16">
+            <div className="flex flex-col gap-16">
                 <Introduction />
                 <Information />
                 <InformationTema />
