@@ -24,7 +24,7 @@ function CentralThemes() {
 
                 <div className="flex flex-col justify-center gap-2 ">
                     {centralThemes.map((theme) => (
-                        <Theme tema={theme.Theme} heading={theme.Name} file={theme.File}/>
+                        <Theme pdf={theme.Pdf} tema={theme.Theme} heading={theme.Name} file={theme.File}/>
                     ))}
                 </div>
                     

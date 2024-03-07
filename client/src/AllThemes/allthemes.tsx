@@ -23,7 +23,7 @@ function AllThemes() {
                     <h1 className="text-3xl font-bold">Alla Teman</h1>
                     {themes.map((theme) => (
                       <div>
-                        <Theme tema={theme.Theme} heading={theme.Name} file={theme.File}/>  
+                        <Theme pdf={theme.Pdf} tema={theme.Theme} heading={theme.Name} file={theme.File}/>  
                       </div>
                     ))}
                 </div>
