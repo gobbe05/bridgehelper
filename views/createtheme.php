@@ -42,7 +42,11 @@
         </div>
         <div>
             <label for="file" class="form-label">Document</label>
-            <input class="form-control" type="file" name="document" id="file">
+            <input class="form-control" type="file" name="document" id="file" required>
+        </div>
+        <div>
+          <label for="pdf" class="form-label">PDF</label>
+          <input class="form-control" type="file" name="pdf" id="pdf"/>
         </div>
         <div id="modal" class="modal" tabindex="-1">
             <div class="modal-dialog">

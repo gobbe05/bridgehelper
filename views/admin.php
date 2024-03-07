@@ -54,6 +54,7 @@
                 <th scope="col">Name</th>
                 <th scope="col">Theme</th>
                 <th scope="col">File Path</th>
+                <th scope="col">Pdf path</th>
                 <th scope="col">Highlight</th>
                 <th scope="col"></th>
 
@@ -69,6 +70,7 @@
                         echo "<td>". $theme['Name']. "</td>";
                         echo "<td>". $theme['Theme']. "</td>";
                         echo "<td>". $theme['File']. "</td>";
+                        echo "<td>". $theme['Pdf']. "</td>";
                         if($theme['Highlight']) {
                         echo "  <td><input type='checkbox' name='". $theme['Id'] ."' checked  disabled/></td>";
                         } else {
