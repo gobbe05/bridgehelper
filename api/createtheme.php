@@ -17,9 +17,11 @@ $theme = $_POST['theme'];
 
 $target_dir = "uploads/";
 $target_file = $target_dir . basename($_FILES["document"]["name"]);
+$target_pdf = $target_dir . basename($_FILES["pdf"]["name"]);
 $fileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+$pdfType = strtolower(pathinfo($target_pdf, PATHINFO_EXTENSION));
 
-if($fileType != "docx" && $fileType != "doc" && $fileType != "odt" && $fileType != "pdf") {
+if($fileType != "docx") {
   header('Location: '. $root . '/admin/?error=The file format is not supported!');
   $mysqli -> close();
   exit();
@@ -33,9 +35,21 @@ if (!file_exists($target_file)) {
   }
 }
 
-$sql = "INSERT INTO Themes (Name, Theme, File) VALUES (?, ?, ?)";
+if($target_pdf != $target_dir && $pdfType == "pdf") {
+  if(!file_exists($target_pdf)) {
+    if(!move_uploaded_file($_FILES["pdf"]["tmp_name"], $target_pdf)) {
+      header('Location: '.$root.'/admin/?error=PDF upload failed');
+      $mysqli -> close();
+      exit();
+    }
+  }
+} else {
+  $target_pdf = "";
+}
+
+$sql = "INSERT INTO Themes (Name, Theme, File, Pdf) VALUES (?, ?, ?, ?)";
 $stmt = $mysqli -> prepare($sql);
-$stmt -> bind_param('sss', $name, $theme, $target_file);
+$stmt -> bind_param('ssss', $name, $theme, $target_file, $target_pdf);
 
 if(!$stmt -> execute()){
   header('Location: '. $root . '/admin/?error=There was an error creating the object!');
