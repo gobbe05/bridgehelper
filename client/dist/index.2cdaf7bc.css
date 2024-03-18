@@ -568,6 +568,10 @@ img, video {
   background-image: url("background.8c90c9e2.png");
 }
 
+.text-nowrap {
+  text-wrap: nowrap;
+}
+
 .hover\:bg-gray-200:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(229 231 235 / var(--tw-bg-opacity));

@@ -2,7 +2,7 @@ import { useContext } from "react"
 import { colorcontext } from "../main"
 import { IoArrowDownOutline, IoEye } from "react-icons/io5";
 
-function Theme({tema, heading, file, pdf} : {tema: string, heading: string, file: string, pdf: string | undefined }) {
+function Theme({tema, heading, file, pdf} : {tema: string, heading: string, file: string, pdf?: string | undefined }) {
     const color = useContext(colorcontext)
     return (
         <>
@@ -17,7 +17,7 @@ function Theme({tema, heading, file, pdf} : {tema: string, heading: string, file
                         <IoArrowDownOutline size={24}/>
                       </a>}
                     </div>
-                    <p className="text-center text-sm">{tema}</p>
+                    <p className="text-center text-sm text-nowrap">{tema}</p>
                 </div>
             </div>
         </>

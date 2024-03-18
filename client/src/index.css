@@ -5,3 +5,6 @@
 .header-text {
     background-image: url("../public/background.png");
 }
+.text-nowrap {
+  text-wrap: nowrap;
+}

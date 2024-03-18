@@ -20,7 +20,7 @@ function CentralThemes() {
     if(centralThemes.length > 0) {
         return (
             <div className={`flex flex-col px-8 lg:px-16 py-8 rounded mb-24 ${color && color.colorMode == "light" ? "bg-poker text-white" : "bg-white text-gray-700"} transition-all`}>
-                <h1 className="text-3xl font-bold">Centrala Teman</h1>
+                <h1 className="text-3xl font-bold">Nedan visas ett axplock på några centrala teman</h1>
 
                 <div className="flex flex-col justify-center gap-2 ">
                     {centralThemes.map((theme) => (
