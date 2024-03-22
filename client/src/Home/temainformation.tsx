@@ -6,14 +6,10 @@ function InformationTema() {
 
     return (
         <div className={`flex items-center rounded ${color?.colorMode == "light" ? "sm:bg-poker sm:text-white" : "sm:bg-white sm:text-gray-700"}`}>
-            <div className="sm:w-1/2 transition-all">
-                <img className="hidden sm:block h-48 mx-auto rounded" src="https://creazilla-store.fra1.digitaloceanspaces.com/cliparts/5626618/deck-of-cards-clipart-sm.png"/>
-            </div>
             <div className={`sm:w-1/2 sm:p-8 rounded`}>
-                <h1 className="text-3xl font-bold">Information</h1>
-                <p className="text-lg">Hjälpredan består av 30 klickbara temaavsnitt syftande till att spegla Bridgefundamenta.</p>
-                <p className="font-light">(Du som känner dig mer bekväm med att
-se informationen på papper – skriv ut materialet).</p>
+                <h1 className="text-3xl font-bold">Så här kan du använda Bridgehelper</h1>
+                <p className="text-xl mt-8 font-semibold">Varje tema innehåller en kortversion om 2 högst 3 sidor per tema, med några rubrikrader följt av en 2:a del i form av något mer omfattande redovisning, om behov skulle föreligga.</p>
+                <p className="text-xl mt-4 font-bold">Början av denna del 2 är markerad i gul</p>
             </div>
         </div>
     )
