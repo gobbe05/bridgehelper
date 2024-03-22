@@ -8,7 +8,7 @@ function Information() {
     const color = useContext(colorcontext)
 
     return (
-        <div className="flex items-center">
+        <div className="flex items-center mb-8">
             <div className={`flex flex-col ${color?.colorMode == "light" ? "sm:bg-poker sm:text-white" : "sm:bg-white sm:text-gray-600"} sm:p-8 lg:px-16 rounded transition-all`}>
                 <div className='flex flex-col gap-4'>
                     <h1 className="text-3xl font-bold">Nedan visas ett axplock på några centrala teman</h1>
