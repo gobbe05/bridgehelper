@@ -1,4 +1,4 @@
-# Bridgehelper - GA
+# Bridgehelper - Gymnasiearbete (Pågående)
 ## Abstract
 Bridgehelper is a web-based application that provides a user-friendly graphical interface for accessing educational resources and information on Bridge. The downloadable resources is stored locally on the web server, while a reference to the file is saved in a SQL database. Once a user makes a request, the application serves the relevant material and allows it to be downloaded.
 
