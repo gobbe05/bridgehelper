@@ -20,11 +20,16 @@ Type defines the format of values in the column. Examples are Integer, String, B
 
 #### Keys & Relations
 Keys are fields that allow relationships to be formed between rows which live in seperate tables. Keys are set by first marking the desired column as either a PRIMARY or FOREIGN key. Columns marked with FOREIGN should form connections with columns that are marked with PRIMARY.
-#### React
-React is a javascrpt library developed by facebook for creating user interfaces. It works by allowing web developers to create reusable UI components that efficiently update and render when the underlying data changes. 
+### React & TypeScript
+React is a javascript library developed by facebook for creating user interfaces. It works by allowing web developers to create reusable UI components that efficiently update and render when the underlying data changes. React is a realitevely heavy framework which abstracts a lot of things such as the templating and state management.
+### PHP
+PHP is an open source general purpose scripting language. It fits well with web development and also works as a templating language. PHP runs on the server and has the ability to be both an api endpoint and web page. A PHP api endpoint can send data in different formats such as JSON which means that it is possible to build different standardized api's such as a REST api or a JSON api. It also works as a templating engine which means that you can run server code and compile server side rendered HTML using information from the server.
 #### PHP Router
-PHPRouter is a compact routing library for PHP. It allows for GET, PATCH/PUT, POST, DELETE and ANY routes.
+PHPRouter is a compact routing library for PHP. It allows for GET, PATCH/PUT, POST, DELETE and ANY routes which makes it very versatile in spite of its small size.
+#### Tailwind
+Tailwind is a css framework that has utility classes and themes. Postcss watches all the files that could include utility classes and compiles them into a single css file that only includes the necessary classnames. This means that the file doesn't have to grow linearly with the project and a classname only has to be defined once. Tailwind also supports different styles depending on different application state such as hover, active or viewport width. It supports different classes depending on if the browser is set to dark or light mode.
 ## Genomförande
+The first step in the process was to discuss expectations with Hans, the customer and write down his requirments. When the base requirments where known I began making a plan. The plan was to create a React application that uses a PHP backend. I also wanted to use a css framework and chose TailwindCSS. I began by installing PHPRouter and setup an endpoint with a wirldcard url that is supposed to be choosen if the requested url doesn't find a match earlier in the routes file. This endpoint is going to send the html file that intitalizes React. Making this endpoint match all request urls means that it is possible to use React router which works on the client side.
 ## Dokumentation av konstruktion, konfiguration och kod
 ### Configuration
 
