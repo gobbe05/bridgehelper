@@ -34,8 +34,98 @@ The first step in the process was to discuss expectations with Hans, the custome
 
 The next step was designing the frontend in (accordance??) with Hans expectations. I started the first step in the design process by creating a few pages in Figma with different layouts and color themes. I then sent the Figma pages to Hans and he chose the starting point. The second step in the design process is creating the functional react components that is needed. These components include some logic, dummy data (for now), JSX and tailwind styling. The third step was creating the database tables and populating them with dummy data. After that i created API endpoints in the backend that responded with the database data for the site. These tables included statistics for the page and information about the accessable document information. 
 ## Dokumentation av konstruktion, konfiguration och kod
-### Configuration
+### Connection to database
+Code connects to the database using the built in mysqli package in PHP and kills the program with an error message on error.
+```php
+// /api/db.php
+<?php
+$mysqli = new mysqli("url","username","password", "dbname");
 
+// Check connection
+if ($mysqli -> connect_errno) {
+  echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
+  exit();
+}
+?>
+```
+
+### API Routes
+File imports react router that is stored in the router.php file. It then defines api routes using the built in get, post, put, patch, delete and any function. The functions take a url and a target file to run.
+
+```php
+// /routes.php
+<?php
+require_once __DIR__.'/router.php';
+
+get('/', 'client.php');
+get('/login', 'views/login.php');
+...
+
+post("/login", 'api/login.php');
+...
+
+any('/404','client.php');
+
+?>
+```
+
+### Client file
+The client.php file imports the precompiled React file and serves it to the web browser. After that it connects to the database and creates a new visit record that keeps track of the pages traffic.
+```php
+// /client.php
+<?php 
+include "client/dist/index.html";
+include "api/db.php";
+
+$sql = "INSERT INTO Visits (Date) 
+        VALUES (now())";
+if ($mysqli->query($sql) != TRUE) {
+  echo "Error: " . $sql . "<br>" . $mysqli->error;
+} 
+```
+### Views
+This section describes different patterns that is used in the views.
+
+Starts the session and redirects to the login page if the user is not logged in
+```php
+session_start();
+if(!isset($_SESSION['loggedin'])) {
+    header('Location: /login');
+    exit();
+}
+```
+Renders the header HTML
+```php
+<?php include('header.php'); ?>
+```
+Takes the provided id and fetches all the themes with that id. Execute query prepares the database for what type of statement that is going to be run. It then inserts the values from the array that is passed in to the function.
+```php
+$id = $_GET['id'];
+$sql = "SELECT * FROM Themes WHERE Id=?";
+$themes = $mysqli -> execute_query($sql, [$id]) -> fetch_all(); 
+```
+Example of delete
+```php
+$sql = "DELETE FROM Themes WHERE Id=?";
+$stmt = $mysqli -> prepare($sql);
+$stmt -> bind_param("i", $id);
+$stmt -> execute();
+```
+
+### API
+Inserting rows
+
+This specific code is an older and cluncier way of writing prepared SQL statements but when this code was written i hadn't heard of the new way. 
+
+$stmt = $mysqli -> prepare($sql); prepares the database for whats to come.
+$stmt -> bind_param(string, ...names); takes a string that defines which types that will be inserted. The following values afterwards is the values that should be inserted in the query. These values must match the types defined in the string.
+
+```php
+$sql = "INSERT INTO Themes (Name, Theme, File, Pdf) VALUES (?, ?, ?, ?)";
+$stmt = $mysqli -> prepare($sql);
+$stmt -> bind_param('ssss', $name, $theme, $target_file, $target_pdf);
+$stmt -> execute();
+```
 ### Code
 ## Diskussion
 ## Källor
