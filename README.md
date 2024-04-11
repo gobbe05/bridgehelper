@@ -22,14 +22,14 @@ Type defines the format of values in the column. Examples are Integer, String, B
 #### Keys & Relations
 Keys are fields that allow relationships to be formed between rows which live in seperate tables. Keys are set by first marking the desired column as either a PRIMARY or FOREIGN key. Columns marked with FOREIGN should form connections with columns that are marked with PRIMARY.
 ### React & TypeScript
-React is a javascript library developed by facebook for creating user interfaces. It works by allowing web developers to create reusable UI components that efficiently update and render when the underlying data changes. React is a realitevely heavy framework which abstracts a lot of things such as the templating and state management.
+React is a javascript library developed by facebook for creating user interfaces. It works by allowing web developers to create reusable UI components that efficiently update and render when the underlying data changes. React is a realitevely heavy framework which abstracts a lot of things such as the templating and state management. Under the hood React works with a virtual DOM which is a copy of the real DOM. When the state of data changes it compares its virtual DOM to the real DOM and makes updates to the real dom where it is needed. This means that you don't have to rerender the whole page.
 ### PHP
 PHP is an open source general purpose scripting language. It fits well with web development and also works as a templating language. PHP runs on the server and has the ability to be both an api endpoint and web page. A PHP api endpoint can send data in different formats such as JSON which means that it is possible to build different standardized api's such as a REST api or a JSON api. It also works as a templating engine which means that you can run server code and compile server side rendered HTML using information from the server.
 #### PHP Router
 PHPRouter is a compact routing library for PHP. It allows for GET, PATCH/PUT, POST, DELETE and ANY routes which makes it very versatile in spite of its small size.
 #### Tailwind
 Tailwind is a css framework that has utility classes and themes. Postcss watches all the files that could include utility classes and compiles them into a single css file that only includes the necessary classnames. This means that the file doesn't have to grow linearly with the project and a classname only has to be defined once. Tailwind also supports different styles depending on different application state such as hover, active or viewport width. It supports different classes depending on if the browser is set to dark or light mode.
-## Genomförande
+## Implementation
 The first step in the process was to discuss expectations with Hans, the customer and write down his requirments. When the base requirments where known I began making a plan. The plan was to create a React application that uses a PHP backend. I also wanted to use a css framework and chose TailwindCSS. I began by installing PHPRouter and setup an endpoint with a wirldcard url that is supposed to be choosen if the requested url doesn't find a match earlier in the routes file. This endpoint is going to send the html file that intitalizes React. Making this endpoint trigger on all all request urls means that it is possible to use React router which is a client side router.
 
 The next step was designing the frontend in (accordance??) with Hans expectations. I started the first step in the design process by creating a few pages in Figma with different layouts and color themes. I then sent the Figma pages to Hans and he chose the starting point. The second step in the design process is creating the functional react components that is needed. These components include some logic, dummy data (for now), JSX and tailwind styling. The third step was creating the database tables and populating them with dummy data. After that i created API endpoints in the backend that responded with the database data for the site. These tables included statistics for the page and information about the accessable document information. 
@@ -301,3 +301,5 @@ function ColorButton() {
 ## Källor
 What is SQL? (AWS) - https://aws.amazon.com/what-is/sql/#%253A~%253Atext%253DStructured%2520query%2520language%2520%2528SQL%2529%2520is%252Cinformation%2520in%2520a%2520relational%2520database.
 PHPRouter - https://phprouter.com/
+What is React.js? Uses, Examples, & More - https://blog.hubspot.com/website/react-js
+How React works under the hood - https://www.zipy.ai/blog/how-react-works-under-the-hood
