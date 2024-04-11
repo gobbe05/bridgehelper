@@ -104,6 +104,18 @@ $id = $_GET['id'];
 $sql = "SELECT * FROM Themes WHERE Id=?";
 $themes = $mysqli -> execute_query($sql, [$id]) -> fetch_all(); 
 ```
+### API
+Inserting rows
+
+This specific code is an older and cluncier way of writing prepared SQL statements but when this code was written i hadn't heard of the new way. 
+
+```php
+$sql = "INSERT INTO Themes (Name, Theme, File, Pdf) VALUES (?, ?, ?, ?)";
+$stmt = $mysqli -> prepare($sql); // Prepares the database for whats to come. 
+$stmt -> bind_param(string, ...names); // Takes a string that defines which types that will be inserted.  
+$stmt -> execute(); // Executes the statement
+```
+
 Example of delete
 ```php
 $sql = "DELETE FROM Themes WHERE Id=?";
@@ -111,22 +123,65 @@ $stmt = $mysqli -> prepare($sql);
 $stmt -> bind_param("i", $id);
 $stmt -> execute();
 ```
-
-### API
-Inserting rows
-
-This specific code is an older and cluncier way of writing prepared SQL statements but when this code was written i hadn't heard of the new way. 
-
-$stmt = $mysqli -> prepare($sql); prepares the database for whats to come.
-$stmt -> bind_param(string, ...names); takes a string that defines which types that will be inserted. The following values afterwards is the values that should be inserted in the query. These values must match the types defined in the string.
-
+Signing the user out
 ```php
-$sql = "INSERT INTO Themes (Name, Theme, File, Pdf) VALUES (?, ?, ?, ?)";
-$stmt = $mysqli -> prepare($sql);
-$stmt -> bind_param('ssss', $name, $theme, $target_file, $target_pdf);
-$stmt -> execute();
+session_start();
+session_destroy();
 ```
-### Code
+Example of updating an object
+```php
+$sql = "UPDATE Themes SET Name=?, Theme=? WHERE Id=?";
+$stmt = $mysqli -> prepare($sql);
+$stmt -> bind_param("ssi", $name, $theme, $id);
+```
+### Client
+This is the root HTML file that imports includes the css, React code and a div for React to mount on.
+```html
+// index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REACT PHP</title>
+    <script type="module" src="index.tsx"></script>
+    <link rel="stylesheet" href="style.css">
+</head> 
+<body>
+   <div id="root"></div>
+</body>
+</html>
+```
+
+This is the css file that initializes tailwind
+```css
+/* index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+JSX for the layout. Uses the Outlet component from React-Router-DOM to provide a layout around the content that will be shown. Different routes render content inside of the Outlet component.
+```tsx
+// layout.tsx
+<div className={`min-h-screen ${color?.colorMode == "light" ? "bg-white         text-neutral-800" : "bg-poker text-white"} transition-all`}>
+    <div className={`lg:w-3/4 xl:w-2/3 px-8 md:px-16 2xl:px-32 sm:mx-autransition-all`}>
+        <div>
+            {/* Header */}
+            <Header visitorCount={visitorCount}/>
+        </div>
+        <div className="flex">
+            <div className="flex-grow">
+                {/* Content */}
+                <Outlet />
+            </div>
+            <div className="hidden">
+                {/* Sidebar */}
+                <Sidebar />
+            </div>
+        </div>
+    </div>
+</div>
+```
 ## Diskussion
 ## Källor
 What is SQL? (AWS) - https://aws.amazon.com/what-is/sql/#%253A~%253Atext%253DStructured%2520query%2520language%2520%2528SQL%2529%2520is%252Cinformation%2520in%2520a%2520relational%2520database.
