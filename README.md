@@ -152,7 +152,6 @@ This is the root HTML file that imports includes the css, React code and a div f
 </body>
 </html>
 ```
-
 This is the css file that initializes tailwind
 ```css
 /* index.css */
@@ -160,10 +159,58 @@ This is the css file that initializes tailwind
 @tailwind components;
 @tailwind utilities;
 ```
+This is the main file that mounts react by using ReactDOMs function create root with a javascript identifier to render the Main component on.
+```tsx
+import Main from './main';
+import ReactDOM from 'react-dom/client'
+
+ReactDOM.createRoot(document.getElementById("root")!).render(
+    <Main />
+)
+```
+This is where the main function comes from. This includes a react browser router that handles all the routing and layouting. This is also where the color context is defined and passed down from.
+```tsx
+export const colorcontext = createContext<{colorMode: "light" | "dark", setColorMode: React.Dispatch<React.SetStateAction<"light" | "dark">>} | undefined>(undefined)
+function App() {
+    const [colorMode, setColorMode] = useState<"light" | "dark">("dark")
+
+    const router = createBrowserRouter(
+        createRoutesFromElements([
+            <Route path="/" element={<Layout />}>
+                <Route index element={<Home />}>
+                    
+                </Route>
+                <Route path="allateman" element={<AllThemes />}>
+
+                </Route>
+            </Route>,
+            <Route path="/bridgehelper" element={<Layout />}>
+            <Route index element={<Home />}>
+                
+            </Route>
+            <Route path="allateman" element={<AllThemes />}>
+
+            </Route>
+        </Route>
+        ])
+    )
+    return (
+        <>
+            <React.StrictMode>
+                <colorcontext.Provider value={{colorMode: colorMode, setColorMode: setColorMode}}>
+                    <RouterProvider router={router} />
+                </colorcontext.Provider>
+            </React.StrictMode>
+        </>
+    )
+}
+
+export default App
+```
 JSX for the layout. Uses the Outlet component from React-Router-DOM to provide a layout around the content that will be shown. Different routes render content inside of the Outlet component.
 ```tsx
 // layout.tsx
-<div className={`min-h-screen ${color?.colorMode == "light" ? "bg-white         text-neutral-800" : "bg-poker text-white"} transition-all`}>
+<div className={`min-h-screen ${color?.colorMode == "light" ? "bg-white text-neutral-800" : "bg-poker text-white"} transition-all`}>
     <div className={`lg:w-3/4 xl:w-2/3 px-8 md:px-16 2xl:px-32 sm:mx-autransition-all`}>
         <div>
             {/* Header */}
@@ -181,6 +228,74 @@ JSX for the layout. Uses the Outlet component from React-Router-DOM to provide a
         </div>
     </div>
 </div>
+```
+Example of fetching the themes from api
+```tsx
+const [themes, setThemes] = useState<Array<any>>([])
+
+async function GetThemes() {
+  const response = await fetch("/getthemes")
+  const data = await response.json()
+  setThemes(data);
+}
+```
+This is a theme component that takes a theme identifier, a heading, a file path and a pdf path. This is reused everywhere that  a theme is shown and interactable.
+```tsx
+// /Components/theme.tsx
+function Theme({tema, heading, file, pdf} : {tema: string, heading: string, file: string, pdf?: string | undefined }) {
+    const color = useContext(colorcontext)
+    return (
+        <>
+            <div className={`flex items-center border-b ${color?.colorMode == "light" ? "border-white" : "border-gray-700"} py-2 mt-2 group`}>
+                <p className="text-lg">{heading}</p>
+                <div className="flex flex-col justify-center ml-auto ">
+                    <div className="flex gap-2">
+                    {pdf && <a href={pdf} target="__blank" className={`flex justify-center items-center border-2 mx-auto p-1 aspect-square rounded-full ${color?.colorMode == "dark" ?  "border-gray-700 hover:bg-gray-700 hover:text-white" : "border-white hover:bg-white hover:text-gray-700"} transition-all`}>
+                        <IoEye size={24} />
+                      </a>}
+                      {file && <a href={file} target="__blank" className={`flex justify-center items-center border-2 mx-auto p-1 aspect-square rounded-full ${color?.colorMode == "dark" ? "border-gray-700 hover:bg-gray-700 hover:text-white" : "border-white hover:bg-white hover:text-gray-700"} transition-all`}>
+                        <IoArrowDownOutline size={24}/>
+                      </a>}
+                    </div>
+                    <p className="text-center text-sm text-nowrap">{tema}</p>
+                </div>
+            </div>
+        </>
+    )
+}
+```
+Example implementation of the theme component
+```tsx
+<Theme file={"/uploads/4b Mer om NT-öppning.docx"} heading={"Behöver du endast en uppfräschning av NT-budet och vill ha en överblick på principen för överföring, går du direkt till tema 4b"} tema={"Tema 4b"}/>
+
+```
+Example implementation of rendering multiple theme components
+```tsx
+{themes.map((theme) => (
+  <div>
+    <Theme pdf={theme.Pdf} tema={theme.Theme} heading={theme.Name} file={theme.File}/>  
+  </div>
+))}
+```
+This is a button that is used to update the color context which holds a value of wether the application is in light or dark mode.
+```tsx
+// /Components/colorbutton.tsx
+function ColorButton() {
+    const color = useContext(colorcontext)
+
+    function toggleColorMode() {
+        if(!color) return
+        const {colorMode, setColorMode} = color
+        colorMode == "dark" && setColorMode("light")
+        colorMode == "light" && setColorMode("dark")
+    }
+
+    return (
+        <div className="absolute right-4 top-4 sm:right-8 sm:top-8 lg:top-16 lg:right-16 z-20 rounded-full">
+            <button className={`sm:hover:scale-125 transition-transform ${color && color.colorMode == "light" ? "text-white lg:text-black" : "text-black lg:text-white"} transition-all`} onClick={toggleColorMode}>{color && color.colorMode == "light" ? <BsSunFill size={32}/> : <BsMoonStarsFill size={32} />}</button>
+        </div>
+    )   
+}
 ```
 ## Diskussion
 ## Källor
