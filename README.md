@@ -34,6 +34,15 @@ The first step in the process was to discuss expectations with Hans, the custome
 
 The next step was designing the frontend in (accordance??) with Hans expectations. I started the first step in the design process by creating a few pages in Figma with different layouts and color themes. I then sent the Figma pages to Hans and he chose the starting point. The second step in the design process is creating the functional react components that is needed. These components include some logic, dummy data (for now), JSX and tailwind styling. The third step was creating the database tables and populating them with dummy data. After that i created API endpoints in the backend that responded with the database data for the site. These tables included statistics for the page and information about the accessable document information. 
 ## Dokumentation av konstruktion, konfiguration och kod
+### Database
+I have two tables. One table to save all information about the themes and one table to save all visits.
+
+The **Themes** table contains Id int (Primary Key), Name varchar, Theme varchar, ThemeId float, File varchar, Pdf varchar, Highlight boolean.
+The **Visits** table contains Id int (Primary Key), Date date.
+
+When I retrieve the themes, I usually sort them by ThemeId where 1a becomes 1.1, 2c becomes 2.3, and so on.
+The reason I save each visit as a row is because I had a thought of being able to show statistics on usage, but it never happened.
+
 ### Connection to database
 Code connects to the database using the built in mysqli package in PHP and kills the program with an error message on error.
 ```php
@@ -298,6 +307,7 @@ function ColorButton() {
 }
 ```
 ## Diskussion
+The project has been pretty straight forward. I used technologies that I already had plenty of experience using. The biggest hurdle was the communication over email. Sometimes the emails went missing which led to a slower development process. If I would do it again I would try to start a conversation on a message application to make it easier to comunicate. It was difficult to work on the project in school since the school IT management blocks all of the ways that you can work with web development locally. Other than that everything went as planned.
 ## Källor
 What is SQL? (AWS) - https://aws.amazon.com/what-is/sql/#%253A~%253Atext%253DStructured%2520query%2520language%2520%2528SQL%2529%2520is%252Cinformation%2520in%2520a%2520relational%2520database.
 PHPRouter - https://phprouter.com/
