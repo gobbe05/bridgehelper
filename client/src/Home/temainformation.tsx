@@ -13,7 +13,8 @@ function InformationTema() {
 
                 <p className="text-lg mt-4">Du lämnar en PDF-sida och återvänder till startsidan genom att trycka <b>&lt;Ctrl+w&gt;</b>.</p>
                 <p className="text-lg mt-1">Du anpassar en PDFs storlek genom att använda knapparna högst upp på sidan.</p>
-            </div>
+                <p className="text-lg mt-4">Att använda läsplatta är perfekt.</p>
+              </div>
         </div>
     )
 }
