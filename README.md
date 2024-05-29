@@ -1,4 +1,4 @@
-# Bridgehelper - Gymnasiearbete (Pågående)
+# Bridgehelper - Gymnasiearbete
 ## Abstract
 Bridgehelper is a web-based application that provides a user-friendly graphical interface for accessing educational resources and information on Bridge. The downloadable resources is stored locally on the web server, while a reference to the file is saved in a SQL database. Once a user makes a request, the application serves the relevant material and allows it to be downloaded.
 
@@ -7,7 +7,7 @@ The reason that I decided to take on this project was that a teacher and supervi
 
 The primary objective of this project is to develop a web application that separates the client and server code, with client code written in React.JS and server code written in PHP, the server offers compiled React.JS code to the client on all routes except for the already specified API routes. The storage of data is accomplished through the use of a MariaDB server with MySQL. MySQLI in PHP is used to communicate with the database, which is managed via PHPMyAdmin.
 
-I had relatively extensive prior knowledge about the technologies that I used in the project which in turn led to a pretty straight forward project. The biggest challenge for me was the communication between me and the customer. 
+I had relatively extensive prior knowledge about the technologies that I used in the project which in turn led to a pretty straight forward project.
 ## Theory
 The project uses an array of technologies, including PHP, MySQL, React with TypeScript, Bootstrap, and Tailwindcss. Prior to starting this project, I already possesed knowledge about React, TypeScript, Bootstrap, and Tailwindcss. However, my knowledge of PHP was limited, and my  SQL knowledge was basic at best. With the guidance of my supervisor, I were able to successfully achieve my objectives.
 
